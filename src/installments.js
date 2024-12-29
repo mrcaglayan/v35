@@ -1,6 +1,6 @@
 import { closeModal } from './user.js';
 
- function generateInstallments(numInstallments) {
+export function generateInstallments(numInstallments) {
     const container = document.getElementById('installmentsContainer');
     container.innerHTML = ''; // Clear previous installments
 
@@ -47,7 +47,7 @@ import { closeModal } from './user.js';
     });
 }
 
- function gatherInstallmentData() {
+export function gatherInstallmentData() {
     const rawInstallments = {};
     const installmentDivs = document.getElementsByClassName('installment');
 

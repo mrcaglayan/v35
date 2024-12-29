@@ -5,8 +5,8 @@ let allDiscountOptions = []; // New array to store all discount options with rat
 
 // Fetch existing discount rates and tables data from the server
 Promise.all([
-    fetch('/api/allDiscountOptions').then(response => response.json()),
-    fetch('/api/tables').then(response => response.json())
+    fetch('http://localhost:3000/api/allDiscountOptions').then(response => response.json()),
+    fetch('http://localhost:3000/api/tables').then(response => response.json())
 ])
     .then(([discountData, tablesData]) => {
         allDiscountOptions = discountData.filter(item => item !== null); // Filter out null values
@@ -111,7 +111,7 @@ function displayTables(tables) {
 
 // Function to send the discount options to the server
 function sendDiscountsToServer() {
-    fetch('/api/allDiscountOptions', {
+    fetch('http://localhost:3000/api/allDiscountOptions', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

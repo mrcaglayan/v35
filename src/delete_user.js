@@ -3,7 +3,7 @@ document.getElementById('back-button').addEventListener('click', function() {
 });
 
 function fetchUsers() {
-    fetch('/api/users')
+    fetch('http://localhost:3000/api/users')
     .then(response => response.json())
     .then(data => {
         users = data;
@@ -32,7 +32,7 @@ function displayUsers() {
 }
 
 function deleteUser(index) {
-    fetch(`/api/users/${index}`, {
+    fetch(`http://localhost:3000/api/users/${index}`, {
         method: 'DELETE'
     })
     .then(response => {

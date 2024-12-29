@@ -7,7 +7,7 @@ let rawSchools = [];
 let schoolBasedOnYearAndSchoolName = {};
 
 // Fetch data from the server
-fetch(`/api/schools`)
+fetch(`http://localhost:3000/api/schools`)
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -29,6 +29,4 @@ fetch(`/api/schools`)
   })
   .catch(error => console.error('Error fetching data:', error));
 
- { schoolBasedOnYearAndSchoolName };
-
-module.s = { schoolBasedOnYearAndSchoolName };
+export { schoolBasedOnYearAndSchoolName };

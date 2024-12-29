@@ -1,7 +1,3 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-
-
 import { schoolBasedOnYearAndSchoolName } from './takeschoolsbyYear.js';
 import { generateInstallments, gatherInstallmentData } from './installments.js';
 const urlParams = new URLSearchParams(window.location.search);
@@ -11,13 +7,13 @@ const selectedYear = urlParams.get('year');
 let tableHeaders = [];
 let schoolData = null;
 let currentAction = ''; // Add this line to track the current action
-function closeModal() {
+export function closeModal() {
     document.getElementById('installmentsModal').style.display = 'none';
 }
-function generateUniqueId() {
+export function generateUniqueId() {
     return Date.now();
 }
-function addEntry(username, rawInstallments, selectedYear) {
+export function addEntry(username, rawInstallments, selectedYear) {
     const entryData = gatherEntryData();
     if (Object.values(entryData).some(value => value === '')) {
         alert('Please fill in all fields');
@@ -39,7 +35,7 @@ function gatherEntryData() {
     return entryData;
 }
 function saveData(endpoint, data, username, selectedYear) {
-    fetch(`/api/${endpoint}`, {
+    fetch(`http://localhost:3000/api/${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -67,7 +63,7 @@ function handleError(message, error) {
     alert(message);
 }
 function fetchTableStructure(year) {
-    fetch(`/api/tables?year=${year}`)
+    fetch(`http://localhost:3000/api/tables?year=${year}`)
     .then(response => handleResponse(response))
     .then(data => {
         const tableStructure = data[year];
@@ -203,7 +199,7 @@ function filterEntries() {
     });
 }
 function fetchStudents(username, selectedYear) {
-    fetch(`/api/students?username=${encodeURIComponent(username)}&year=${encodeURIComponent(selectedYear)}`)
+    fetch(`http://localhost:3000/api/students?username=${encodeURIComponent(username)}&year=${encodeURIComponent(selectedYear)}`)
     .then(response => handleResponse(response))
     .then(data => {
         const studentList = document.querySelector('#student-list');
@@ -249,7 +245,7 @@ function deleteStudent(studentId, username, selectedYear) {
 }
 
 function deleteData(endpoint, id, username, selectedYear) {
-    fetch(`/api/${endpoint}/${id}`, { method: 'DELETE' })
+    fetch(`http://localhost:3000/api/${endpoint}/${id}`, { method: 'DELETE' })
     .then(response => handleResponse(response))
     .then(data => {
         console.log(`${endpoint} deleted:`, data);
@@ -300,7 +296,7 @@ function editStudent(student, row) {
 }
 
 function saveEditedData(studentId, updatedStudentData) {
-    fetch(`/api/students/${studentId}`, {
+    fetch(`http://localhost:3000/api/students/${studentId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedStudentData)
@@ -311,7 +307,7 @@ function saveEditedData(studentId, updatedStudentData) {
 }
 
 function saveEditedDatacompleteentrydb(studentId, updatedStudentData) {
-    fetch(`/api/completeentrydb/${studentId}`, {
+    fetch(`http://localhost:3000/api/completeentrydb/${studentId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedStudentData)
@@ -454,7 +450,7 @@ document.getElementById('search-button').addEventListener('click', () => {
             previousApplyButton.remove();
         }
 
-        let url = `/api/completeentrydb?studenttezkereNo=${encodeURIComponent(studenttezkereNo)}`;
+        let url = `http://localhost:3000/api/completeentrydb?studenttezkereNo=${encodeURIComponent(studenttezkereNo)}`;
         if (currentAction === 'renew') {
             url += `&schoolName=${encodeURIComponent(schoolName)}`;
         }
@@ -574,7 +570,7 @@ applyButton.addEventListener('click', () => {
     document.getElementById('back-button').addEventListener('click', () => window.location.href = 'index.html');
 
     function fetchSchoolData(school) {
-        fetch('/api/schools')
+        fetch('http://localhost:3000/api/schools')
         .then(response => handleResponse(response))
         .then(data => {
             schoolData = data.find(s => s.name === school);
