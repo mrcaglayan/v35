@@ -2,7 +2,6 @@
   "name": "my-web-app",
   "version": "1.0.0",
   "description": "A web application with user and admin login functionality.",
-  "type": "module",
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
