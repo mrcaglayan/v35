@@ -16,7 +16,7 @@ document.getElementById('submitbuttonforindex').addEventListener('click', functi
     const dataToSend = { indexRange: indexRange };
     console.log('Data being sent:', dataToSend);
 
-    fetch('/api/indexesforinformationpass', {
+    fetch('/api/api/indexesforinformationpass', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -48,7 +48,7 @@ document.getElementById('changebuttonforindex').addEventListener('click', functi
     const dataToSend = { indexRange: indexRange };
     console.log('Data being sent:', dataToSend);
 
-    fetch('/api/updateindexesforinformationpass', {
+    fetch('/api/api/updateindexesforinformationpass', {
         method: 'PUT', // Use PUT method for updating
         headers: {
             'Content-Type': 'application/json'

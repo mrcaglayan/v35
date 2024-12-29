@@ -1,6 +1,10 @@
 import { closeModal } from './user.js';
 
+<<<<<<< HEAD
  export function generateInstallments(numInstallments) {
+=======
+export function generateInstallments(numInstallments) {
+>>>>>>> d9cd681cd0547d72b8c76dfc7adfd3974905013b
     const container = document.getElementById('installmentsContainer');
     container.innerHTML = ''; // Clear previous installments
 
@@ -47,7 +51,7 @@ import { closeModal } from './user.js';
     });
 }
 
- function gatherInstallmentData() {
+export function gatherInstallmentData() {
     const rawInstallments = {};
     const installmentDivs = document.getElementsByClassName('installment');
 

@@ -35,7 +35,7 @@ function gatherEntryData() {
     return entryData;
 }
 function saveData(endpoint, data, username, selectedYear) {
-    fetch(`http://localhost:3000/api/${endpoint}`, {
+    fetch(`https://v35-5pturkvfx-ufuks-projects-c6a815ff.vercel.app/api/${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -63,7 +63,7 @@ function handleError(message, error) {
     alert(message);
 }
 function fetchTableStructure(year) {
-    fetch(`http://localhost:3000/api/tables?year=${year}`)
+    fetch(`https://v35-5pturkvfx-ufuks-projects-c6a815ff.vercel.app/api/tables?year=${year}`)
     .then(response => handleResponse(response))
     .then(data => {
         const tableStructure = data[year];
@@ -199,7 +199,7 @@ function filterEntries() {
     });
 }
 function fetchStudents(username, selectedYear) {
-    fetch(`http://localhost:3000/api/students?username=${encodeURIComponent(username)}&year=${encodeURIComponent(selectedYear)}`)
+    fetch(`https://v35-5pturkvfx-ufuks-projects-c6a815ff.vercel.app/api/students?username=${encodeURIComponent(username)}&year=${encodeURIComponent(selectedYear)}`)
     .then(response => handleResponse(response))
     .then(data => {
         const studentList = document.querySelector('#student-list');
@@ -245,7 +245,7 @@ function deleteStudent(studentId, username, selectedYear) {
 }
 
 function deleteData(endpoint, id, username, selectedYear) {
-    fetch(`http://localhost:3000/api/${endpoint}/${id}`, { method: 'DELETE' })
+    fetch(`https://v35-5pturkvfx-ufuks-projects-c6a815ff.vercel.app/api/${endpoint}/${id}`, { method: 'DELETE' })
     .then(response => handleResponse(response))
     .then(data => {
         console.log(`${endpoint} deleted:`, data);
@@ -296,7 +296,7 @@ function editStudent(student, row) {
 }
 
 function saveEditedData(studentId, updatedStudentData) {
-    fetch(`http://localhost:3000/api/students/${studentId}`, {
+    fetch(`https://v35-5pturkvfx-ufuks-projects-c6a815ff.vercel.app/api/students/${studentId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedStudentData)
@@ -307,7 +307,7 @@ function saveEditedData(studentId, updatedStudentData) {
 }
 
 function saveEditedDatacompleteentrydb(studentId, updatedStudentData) {
-    fetch(`http://localhost:3000/api/completeentrydb/${studentId}`, {
+    fetch(`https://v35-5pturkvfx-ufuks-projects-c6a815ff.vercel.app/api/completeentrydb/${studentId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedStudentData)
@@ -450,7 +450,7 @@ document.getElementById('search-button').addEventListener('click', () => {
             previousApplyButton.remove();
         }
 
-        let url = `http://localhost:3000/api/completeentrydb?studenttezkereNo=${encodeURIComponent(studenttezkereNo)}`;
+        let url = `https://v35-5pturkvfx-ufuks-projects-c6a815ff.vercel.app/api/completeentrydb?studenttezkereNo=${encodeURIComponent(studenttezkereNo)}`;
         if (currentAction === 'renew') {
             url += `&schoolName=${encodeURIComponent(schoolName)}`;
         }
@@ -489,7 +489,7 @@ applyButton.id = 'apply-button';
 document.getElementById('search-modal').querySelector('.modal-content').appendChild(applyButton);
 
 applyButton.addEventListener('click', () => {
-    fetch('/data.json') // Ensure the path is correct
+    fetch('/api/data.json') // Ensure the path is correct
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -570,7 +570,7 @@ applyButton.addEventListener('click', () => {
     document.getElementById('back-button').addEventListener('click', () => window.location.href = 'index.html');
 
     function fetchSchoolData(school) {
-        fetch('http://localhost:3000/api/schools')
+        fetch('/api/schools')
         .then(response => handleResponse(response))
         .then(data => {
             schoolData = data.find(s => s.name === school);

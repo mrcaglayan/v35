@@ -3,7 +3,7 @@ document.getElementById('back-button').addEventListener('click', function() {
 });
 
 function fetchUsers() {
-    fetch('/api/users')
+    fetch('/api/api/users')
     .then(response => response.json())
     .then(data => {
         users = data;

@@ -85,7 +85,7 @@ function addSchool() {
             semesterEnd: new Date(semesterEnd)
         };
 
-        fetch('/api/schools', {
+        fetch('/api/api/schools', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -112,7 +112,7 @@ function addSchool() {
 }
 
 function fetchSchools() {
-    fetch('/api/schools')
+    fetch('/api/api/schools')
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -143,7 +143,7 @@ function fetchSchools() {
 }
 
 function editSchool(index) {
-    fetch('/api/schools')
+    fetch('/api/api/schools')
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
