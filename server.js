@@ -370,7 +370,7 @@ app.get('/favicon.ico', (req, res) => {
 });
 
 app.get('/src/*', (req, res) => {
-    const filePath = path.join(__dirname, 'src', req.params[0]);
+    const filePath = path.join(__dirname, 'src', req.params[0])+'.js';
     if (fs.existsSync(filePath)) {
         res.sendFile(filePath);
     } else {
@@ -379,7 +379,7 @@ app.get('/src/*', (req, res) => {
 });
 
 app.get('/styles/*', (req, res) => {
-    const filePath = path.join(__dirname, 'styles', req.params[0]);
+    const filePath = path.join(__dirname, 'styles', req.params[0] + '.css');
     if (fs.existsSync(filePath)) {
         res.sendFile(filePath);
     } else {
@@ -392,7 +392,7 @@ app.get('/data.json', (req, res) => {
 
 });
 app.get('/*', (req, res) => {
-    const filePath = path.join(__dirname, 'public', req.params[0]);
+    const filePath = path.join(__dirname, 'public', req.params[0])  + '.html';
     if (fs.existsSync(filePath)) {
         res.sendFile(filePath);
     } else {
