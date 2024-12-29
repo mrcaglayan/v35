@@ -29,6 +29,6 @@ fetch(`/api/schools`)
   })
   .catch(error => console.error('Error fetching data:', error));
 
-export { schoolBasedOnYearAndSchoolName };
+ { schoolBasedOnYearAndSchoolName };
 
-module.exports = { schoolBasedOnYearAndSchoolName };
+module.s = { schoolBasedOnYearAndSchoolName };
