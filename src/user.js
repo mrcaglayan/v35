@@ -11,13 +11,13 @@ const selectedYear = urlParams.get('year');
 let tableHeaders = [];
 let schoolData = null;
 let currentAction = ''; // Add this line to track the current action
-export function closeModal() {
+function closeModal() {
     document.getElementById('installmentsModal').style.display = 'none';
 }
-export function generateUniqueId() {
+function generateUniqueId() {
     return Date.now();
 }
-export function addEntry(username, rawInstallments, selectedYear) {
+function addEntry(username, rawInstallments, selectedYear) {
     const entryData = gatherEntryData();
     if (Object.values(entryData).some(value => value === '')) {
         alert('Please fill in all fields');
