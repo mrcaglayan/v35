@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (userType === 'user') {
         // Fetch the list of schools and populate the dropdown
-        fetch('/api/schools')
+        fetch('/api/api/schools')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         schoolSelect.addEventListener('change', function() {
             const selectedSchool = schoolSelect.value;
             yearSelect.innerHTML = ''; // Clear previous options
-            fetch('/api/tables')
+            fetch('/api/api/tables')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const year = document.getElementById('year').value;
 
         if (username && password && school && year) {
-            fetch('/api/users')
+            fetch('/api/api/users')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');

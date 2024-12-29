@@ -489,7 +489,7 @@ applyButton.id = 'apply-button';
 document.getElementById('search-modal').querySelector('.modal-content').appendChild(applyButton);
 
 applyButton.addEventListener('click', () => {
-    fetch('/data.json') // Ensure the path is correct
+    fetch('/api/data.json') // Ensure the path is correct
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -570,7 +570,7 @@ applyButton.addEventListener('click', () => {
     document.getElementById('back-button').addEventListener('click', () => window.location.href = 'index.html');
 
     function fetchSchoolData(school) {
-        fetch('/api/schools')
+        fetch('/api/api/schools')
         .then(response => handleResponse(response))
         .then(data => {
             schoolData = data.find(s => s.name === school);
