@@ -379,11 +379,11 @@ app.get('/src/*', (req, res) => {
 });
 
 app.get('/styles/*', (req, res) => {
-    const filePath = path.join(__dirname, 'public', 'styles', req.params[0] + '.css');
-    console.log('Requested file path:', filePath); // Log the file path
+    const filePath = path.join(__dirname, 'styles', req.params[0] + '.css');
     if (fs.existsSync(filePath)) {
         res.sendFile(filePath);
     } else {
+        console.log('Requested file path:', filePath);
         res.status(404).send('File not found');
     }
 });
