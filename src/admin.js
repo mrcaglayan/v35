@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function resetServer() {
-        fetch('http://localhost:3000/api/tables', {
+        fetch('/api/tables', {
             method: 'DELETE'
         })
         .then(response => {

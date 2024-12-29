@@ -85,7 +85,7 @@ function addSchool() {
             semesterEnd: new Date(semesterEnd)
         };
 
-        fetch('http://localhost:3000/api/schools', {
+        fetch('/api/schools', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -112,7 +112,7 @@ function addSchool() {
 }
 
 function fetchSchools() {
-    fetch('http://localhost:3000/api/schools')
+    fetch('/api/schools')
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -143,7 +143,7 @@ function fetchSchools() {
 }
 
 function editSchool(index) {
-    fetch('http://localhost:3000/api/schools')
+    fetch('/api/schools')
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -212,7 +212,7 @@ function saveSchool(index) {
 
         console.log('Saving school:', school); // Log the school data being saved
 
-        fetch(`http://localhost:3000/api/schools/${index}`, {
+        fetch(`/api/schools/${index}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -243,7 +243,7 @@ function cancelEdit(index) {
 }
 
 function deleteSchool(index) {
-    fetch(`http://localhost:3000/api/schools/${index}`, {
+    fetch(`/api/schools/${index}`, {
         method: 'DELETE'
     })
     .then(response => {
