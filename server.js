@@ -392,7 +392,7 @@ app.get('/data.json', (req, res) => {
 
 });
 app.get('/*', (req, res) => {
-    const filePath = path.join(__dirname, 'public', req.params[0]+'.html');
+    const filePath = path.join(__dirname, 'public', req.params[0]);
     if (fs.existsSync(filePath)) {
         res.sendFile(filePath);
     } else {
