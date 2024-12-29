@@ -5,6 +5,9 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 const port = 3000;
+const { schoolBasedOnYearAndSchoolName } = require('./user'); // Import the function from user.js
+
+
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -371,6 +374,7 @@ app.get('/favicon.ico', (req, res) => {
 
 app.get('/src/*', (req, res) => {
     const filePath = path.join(__dirname, 'src', req.params[0]);
+    takeschoolsbyYear(filePath, res)
     if (fs.existsSync(filePath)) {
         res.sendFile(filePath);
     } else {
