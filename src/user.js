@@ -1,3 +1,7 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
+
 import { schoolBasedOnYearAndSchoolName } from './takeschoolsbyYear.js';
 import { generateInstallments, gatherInstallmentData } from './installments.js';
 const urlParams = new URLSearchParams(window.location.search);
