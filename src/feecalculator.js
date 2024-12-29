@@ -2,7 +2,7 @@ let studentsInfoWithoutFee = [];
 let allDiscountOptionsforFee = [];
 
 // Fetch the completeentrydb list from the server and store it in studentsInfoWithoutFee variable
-fetch('http://localhost:3000/api/completeentrydb')
+fetch('/api/completeentrydb')
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -20,7 +20,7 @@ fetch('http://localhost:3000/api/completeentrydb')
     .catch(error => console.error('Error fetching data:', error));
 
 // Fetch the allDiscountOptions list from the server and store it in allDiscountOptionsforFee variable    
-fetch('http://localhost:3000/api/allDiscountOptions')
+fetch('/api/allDiscountOptions')
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
